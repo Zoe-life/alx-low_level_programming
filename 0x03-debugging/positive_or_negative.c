@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * main - tests function that prints if integer is positive or negative
+ * postive_or_negative - tests function that prints if integer is positive or negative
  * Return: 0
 */
 

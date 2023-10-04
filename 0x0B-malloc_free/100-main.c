@@ -5,6 +5,9 @@
 
 /**
  * main - check the code for ALX School students.
+ * @ac: integer
+ * @av : array of pointers to characters
+ * @*s: pointer to character s
  *
  * Return: Always 0.
  */

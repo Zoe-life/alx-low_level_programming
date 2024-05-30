@@ -24,4 +24,4 @@ oclean:
 fclean: clean oclean
 
 .PHONY: re
-re: all
+re: oclean all

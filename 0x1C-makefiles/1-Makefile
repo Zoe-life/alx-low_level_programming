@@ -1,10 +1,12 @@
 # Compiler variable
 CC = gcc
-school: main.c school.c
-	$(CC) $(CFLAGS) $(SRC) main.c school.c -o school
+NAME = school
+SRC =  main.c school.c
 
 PHONY: all
-all: school
+all: 
+	$(CC) $(SRC) -o $(NAME)
+
 
 # Clean target
 .PHONY: clean

@@ -1,0 +1,51 @@
+#include <stdio.h> // For error printing (optional)
+#include <Python.h> // Include Python header
+
+int add(int a, int b) {
+  return a + b;
+}
+
+int sub(int a, int b) {
+  return a - b;
+}
+
+int mul(int a, int b) {
+  return a * b;
+}
+
+int div(int a, int b) {
+  if (b == 0) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "division by zero");
+    return -1; // Or any error code
+  }
+  return a / b;
+}
+
+int mod(int a, int b) {
+  if (b == 0) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "modulo by zero");
+    return -1; // Or any error code
+  }
+  return a % b;
+}
+
+static PyMethodDef operations_methods[] = {
+    {"add", (PyCFunction)add, METH_VARARGS, "Add two integers"},
+    {"sub", (PyCFunction)sub, METH_VARARGS, "Subtract two integers"},
+    {"mul", (PyCFunction)mul, METH_VARARGS, "Multiply two integers"},
+    {"div", (PyCFunction)div, METH_VARARGS, "Divide two integers"},
+    {"mod", (PyCFunction)mod, METH_VARARGS, "Modulo two integers"},
+    {NULL, NULL, 0, NULL} // Sentinel
+};
+
+static struct PyModuleDef operationsmodule = {
+    PyModuleDef_HEAD_INIT,
+    "operations",  // Module name
+    "A module for basic arithmetic operations",  // Docstring
+    -1,
+    operations_methods
+};
+
+PyMODINIT_FUNC PyInit_operations(void) {
+  return PyModule_Create(&operationsmodule);
+}
